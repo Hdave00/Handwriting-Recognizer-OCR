@@ -12,11 +12,20 @@ import tensorflow_datasets as tfds
 )
 
 def preprocess(image, label):
+    
     image = tf.cast(image, tf.float32) / 255.0
-    image = tf.transpose(image, perm=[1, 0, 2])  # rotate while preserving channel
-    image = tf.image.flip_left_right(image)      # horizontal flip
-    image = tf.expand_dims(image, -1)            # add channel
-    label = label - 1                             # labels: 0–25
+
+    # rotate while preserving channel
+    image = tf.transpose(image, perm=[1, 0, 2])
+
+    # horizontal flip
+    image = tf.image.flip_left_right(image)
+
+    # add channel
+    image = tf.expand_dims(image, -1)
+
+    # labels: 0-25
+    label = label - 1
     label = tf.one_hot(label, 26)
     return image, label
 
