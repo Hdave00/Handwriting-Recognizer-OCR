@@ -55,7 +55,7 @@ letter-checker/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/letter-checker.git
+git clone https://github.com/yourusername/Handwriting-Recognizer.git
 cd letter-checker
 ```
 
