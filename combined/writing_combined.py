@@ -94,6 +94,7 @@ model.compile(
     metrics=["accuracy", "precision", "recall"],
 )
 
+# Training it for 10 epochs/iterations, each time learning by inference as well, using the test set for inference
 model.fit(train_dataset, epochs=10, validation_data=test_dataset)
 
 # Augemnent data to randomize/scramble the data even more to avoid bias
