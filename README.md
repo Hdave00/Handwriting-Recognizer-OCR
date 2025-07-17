@@ -1,6 +1,6 @@
 # Handwriting Recognizer
 
-A machine learning-powered character recognition tool that uses Convolutional Neural Networks (CNNs) to identify handwritten **digits** and **letters**. The project lets you draw characters on a Pygame-based canvas and watch the AI guess them in real time using pre-trained models.
+A **machine learning-powered** character recognition tool that uses Convolutional Neural Networks (CNNs) to identify handwritten **digits** and **letters**. The project lets you draw characters on a Pygame-based canvas and watch the AI guess them in real time using pre-trained models.
 
 This project supports:
 

@@ -20,7 +20,7 @@ x_test = x_test.reshape(
     x_test.shape[0], x_test.shape[1], x_test.shape[2], 1
 )
 
-# Build model
+# Build model, using the functional API form keras.
 inputs = tf.keras.Input(shape=(28, 28, 1))
 x = tf.keras.layers.Conv2D(32, (3, 3), activation="relu", padding="same")(inputs)
 x = tf.keras.layers.MaxPooling2D(pool_size=(2, 2), name="pool1")(x)
@@ -31,6 +31,7 @@ outputs = tf.keras.layers.Dense(10, activation="softmax")(x)
 
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
+# Create model object and compile with needed parameters
 model = tf.keras.Model(inputs, outputs)
 model.compile(
         optimizer=optimizer,
@@ -38,11 +39,14 @@ model.compile(
         metrics=["accuracy", "precision", "recall"],
     )
 
+# Give me a summary and fit the model
 model.summary()
 model.fit(x_train, y_train, epochs=10,)
 
+# Check its accuracy
 model.evaluate(x_test, y_test, verbose=2)
 
+# Save to whatever file pro
 if len(sys.argv) == 2:
     model.save(sys.argv[1])
     print(f"Digits model saved to {sys.argv[1]}")
