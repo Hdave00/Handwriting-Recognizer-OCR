@@ -46,7 +46,7 @@ model.fit(x_train, y_train, epochs=10,)
 # Check its accuracy
 model.evaluate(x_test, y_test, verbose=2)
 
-# Save to whatever file pro
+# Save to whatever file provided as an arg NOTE use .keras file extension
 if len(sys.argv) == 2:
     model.save(sys.argv[1])
     print(f"Digits model saved to {sys.argv[1]}")
