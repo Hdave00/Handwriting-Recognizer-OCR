@@ -5,6 +5,12 @@ import tensorflow as tf
 import time
 import string
 
+""" This is where we are doing the pygame visualization of how the Neural Network detects handwriting for both letters and, numbers.
+    - User can switch between digit mode and letter mode to more accurately let the NN detect input.
+    - It can't really be combined in one mode as the MNIST and EMNIST datasets have different collection paramters and are presented differently when exposed
+        to the neural network. Especially when using this methodology of visualizing machine learning.    
+"""
+
 # Combined label mapping
 labels = list(string.digits + string.ascii_uppercase)
 

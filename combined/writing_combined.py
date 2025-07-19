@@ -85,7 +85,7 @@ x = tf.keras.layers.Dense(192, activation="relu")(x)
 
 x = tf.keras.layers.Dropout(0.4)(x)
 
-# 36 classes for numbers and letters ie, 0-9 = 10 digits and A-Z = 26 letters
+# outputs 36 classes for numbers and letters ie, 0-9 = 10 digits and A-Z = 26 letters
 outputs = tf.keras.layers.Dense(36, activation="softmax")(x)  
 
 model = tf.keras.Model(inputs, outputs)
