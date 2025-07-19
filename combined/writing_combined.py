@@ -58,7 +58,7 @@ def preprocess_letters(image, label):
     label = tf.one_hot(label, 36)  # 10 digits + 26 letters
     return image, label
 
-# Combine and shuffle datasets
+# Combine and shuffle datasets, because we want to be able to detect both numbers and letters
 def combine_datasets(ds1, ds2):
 
     ds1 = ds1.map(preprocess_digits)
@@ -71,9 +71,10 @@ train_dataset = combine_datasets(digits_train, letters_train).shuffle(10000).bat
 test_dataset = combine_datasets(digits_test, letters_test).batch(32)
 
 
-# Build the CNN using the functional API... for now
+# Build the CNN using the Keras functional API... for now
 inputs = tf.keras.Input(shape=(28, 28, 1))
 
+# Careful with the adjustments, it took 13 iterations to get the right one that doesn't overfit and maintains accuracy
 x = tf.keras.layers.Conv2D(40, (3, 3), activation="relu", padding="same")(inputs)
 
 x = tf.keras.layers.MaxPooling2D(pool_size=(2, 2))(x)
@@ -84,7 +85,8 @@ x = tf.keras.layers.Dense(192, activation="relu")(x)
 
 x = tf.keras.layers.Dropout(0.4)(x)
 
-outputs = tf.keras.layers.Dense(36, activation="softmax")(x)  # 36 classes
+# 36 classes for numbers and letters ie, 0-9 = 10 digits and A-Z = 26 letters
+outputs = tf.keras.layers.Dense(36, activation="softmax")(x)  
 
 model = tf.keras.Model(inputs, outputs)
 
