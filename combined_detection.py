@@ -25,7 +25,7 @@ WHITE = (255, 255, 255)
 
 # Start pygame
 pygame.init()
-size = width, height = 800, 500  # Increased size for additional UI
+size = width, height = 800, 500  # Changes in size must account for for additional UI changes (if any)
 screen = pygame.display.set_mode(size)
 
 # Fonts
