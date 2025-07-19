@@ -10,7 +10,7 @@ from sklearn.utils.class_weight import compute_class_weight # for weighting in t
         - We also do the testing for the most recently trained CNN here.
 """
 
-# Load both datasets
+# Load both datasets, ie, digits and letters
 (digits_train, digits_test), digits_info = tfds.load(
     'mnist',
     split=['train', 'test'],
@@ -19,6 +19,7 @@ from sklearn.utils.class_weight import compute_class_weight # for weighting in t
     with_info=True
 )
 
+# Ltters data set
 (letters_train, letters_test), letters_info = tfds.load(
     'emnist/letters',
     split=['train', 'test'],
