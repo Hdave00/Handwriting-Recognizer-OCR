@@ -2,6 +2,9 @@ import sys
 import tensorflow as tf
 import tensorflow_datasets as tfds
 
+# Use EMNIST handwriting dataset -- NOTE -- EMNIST comes built in with TensorFlow lib, use it. We can make our own, but we will have to turn it into an
+# array of pixels
+
 # Load EMNIST Letters (labels 1-26 -> A-Z)
 (ds_train, ds_test), ds_info = tfds.load(
     'emnist/letters',
@@ -12,6 +15,10 @@ import tensorflow_datasets as tfds
 )
 
 def preprocess(image, label):
+    """ Preprocess function takes the images/training data and orients them to the correct format to be able to draw on a flatplane with
+        the correct angle of incidence.
+          - In essence, because EMNIST letters are collected as mirrored images, but we dont want to draw them as mirrored, we 'reframe'
+            them to be drawn naturally."""
     
     image = tf.cast(image, tf.float32) / 255.0
 
