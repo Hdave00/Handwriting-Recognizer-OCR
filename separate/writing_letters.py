@@ -48,9 +48,11 @@ x = tf.keras.layers.Dense(192, activation="relu")(x)
 x = tf.keras.layers.Dropout(0.4)(x)
 outputs = tf.keras.layers.Dense(26, activation="softmax")(x)
 
-
+# using the Adam optimization function and a learning rate of 0.001. The lower the learning rate, the higher the accuracy until we cross a certain threshold
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
+# creating the model object with expects the input and output parameters, which we have defined as the shape, and output layers as 26 ie, the 26 letters. 
+# Essentially, we have defined outputs above as the number of output layers to be "mapped" after the neural network has been trained, as we want 26 possible outputs. 
 model = tf.keras.Model(inputs, outputs)
 model.compile(
         optimizer=optimizer,
