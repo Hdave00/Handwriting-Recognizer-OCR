@@ -60,11 +60,13 @@ model.compile(
         metrics=["accuracy", "precision", "recall"],
     )
 
+# print a model summary (built in function), and fit the model and training it for 10 epochs.
 model.summary()
 model.fit(ds_train, epochs=10)
 
 model.evaluate(ds_test)
 
+# save the model if provided at command line.
 if len(sys.argv) == 2:
     model.save(sys.argv[1])
     print(f"Letters model saved to {sys.argv[1]}")
