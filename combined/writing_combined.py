@@ -77,12 +77,16 @@ inputs = tf.keras.Input(shape=(28, 28, 1))
 # Careful with the adjustments, it took 13 iterations to get the right one that doesn't overfit and maintains accuracy
 x = tf.keras.layers.Conv2D(40, (3, 3), activation="relu", padding="same")(inputs)
 
+# max pooling size of 2x2, we dont want to increase else we might be iverfitting
 x = tf.keras.layers.MaxPooling2D(pool_size=(2, 2))(x)
 
+# flatten layers to get the correct output format we want 
 x = tf.keras.layers.Flatten()(x)
 
+# 192 layers in the neural network using rectified linear unit ie, f(x) = max(0, x) meaning it outputs the input directly if it's positive, and 0 otherwise 
 x = tf.keras.layers.Dense(192, activation="relu")(x)
 
+# we want to randomly drop 0.4 or ~40% of the nodes in the network, to prevent overfitting to ultimately have better generalisation
 x = tf.keras.layers.Dropout(0.4)(x)
 
 # outputs 36 classes for numbers and letters ie, 0-9 = 10 digits and A-Z = 26 letters
@@ -108,7 +112,7 @@ datagen = tf.keras.preprocessing.image.ImageDataGenerator(
     zoom_range=0.1
 )
 
-# print the Functional graph
+# print the functional graph
 model.summary()
 
 # Evaluate and maybe save
