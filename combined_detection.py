@@ -66,7 +66,7 @@ while True:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse = event.pos
 
-            # id the cursor is over the reset button, then clear the handwriting, classification and confidence (hide them)
+            # if the cursor is over the reset button, then clear the handwriting, classification and confidence (hide them)
             if resetButton.collidepoint(mouse):
                 handwriting = [[0] * COLS for _ in range(ROWS)]
                 classification = None
