@@ -206,7 +206,7 @@ while True:
         # -----  NOTE  -----
         """
         --- Important note about model ---
-            Make sure model is trained to output:
+            Make sure model is trained to the following output:
 
             - 0-9 for digits
             - 10-35 for letters (A-Z)
